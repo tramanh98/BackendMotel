@@ -21,6 +21,7 @@ class MyProfile(APIView):
 
     @csrf_exempt
     def get(seft, request, *args, **kwargs):
+        print(request.user.id)
         user = get_object_or_404(User, pk = request.user.id)
         serializer = UserSerializer(user)
         return Response({"profile": serializer.data})
