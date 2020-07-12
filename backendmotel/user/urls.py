@@ -11,7 +11,7 @@ router.register(r'update', ProfileUpdateDeleteAPIView, basename="Posts")
 
 urlpatterns = [
     path('myprofile/', MyProfile.as_view()),
-    path('api/', include(router.urls)),
+    path('api/profile/', include(router.urls)),
 ]
 
 

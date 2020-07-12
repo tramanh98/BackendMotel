@@ -33,15 +33,26 @@ class MyProfile(APIView):
         serializer = UserSerializer(instance=profile, data=data, partial=True)
         if serializer.is_valid(raise_exception=True):
             profile_saved = serializer.save()
-        return Response({"success": "Profile '{}' updated successfully".format(profile_saved.id)})
+        return Response({"success": "Success", "data" : serializer.data})
 
 
     
-class ProfileUpdateDeleteAPIView(viewsets.GenericViewSet,
+class ProfileUpdateDeleteAPIView1(viewsets.GenericViewSet,
                                   RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    lookup_field = 'id'
+    # lookup_field = 'id'
+
+
+class ProfileUpdateDeleteAPIView(viewsets.GenericViewSet, RetrieveUpdateDestroyAPIView): 
+    permission_classes = (IsAuthenticated,)
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_queryset(self): #Authentication user để xóa bài đăng
+        
+        query = User.objects.filter(pk = self.request.user.id)
+        return query
 
 

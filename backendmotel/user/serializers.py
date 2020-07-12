@@ -8,6 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('first_name', 'last_name','phone','email')
         read_only_fields = ('email', )
+        # exclude = ('password',)
 
 
     def update(self, instance, validated_data):
