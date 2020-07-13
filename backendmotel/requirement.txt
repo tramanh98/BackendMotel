@@ -8,9 +8,6 @@ django-filter==2.3.0
 django-imagekit==4.0.2
 django-phonenumber-field==4.0.0
 djangorestframework==3.11.0
-djangorestframework-jwt==1.11.0
-djangorestframework-simplejwt==4.4.0
-googlemaps==4.4.1
 idna==2.10
 Markdown==3.2.2
 phonenumbers==8.12.6
