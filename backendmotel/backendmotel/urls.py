@@ -7,7 +7,7 @@ urlpatterns = [
     path('auth/', include('rest_auth.urls')),
     path('auth/registration/', include('rest_auth.registration.urls')),
     path('accounts/', include('allauth.urls')),
-    path('authgg/', include('rest_framework_social_oauth2.urls')),
+    path('auth/social/', include('rest_framework_social_oauth2.urls')),
     path('', include("motel.urls")),
     path('', include("user.urls")),
 ]

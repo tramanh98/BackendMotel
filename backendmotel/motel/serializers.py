@@ -45,7 +45,7 @@ class GetMotelSerializer(serializers.ModelSerializer):  # kết hợp với User
                   'district', 'local_map', 'phone_number', 'arc', 'price', 'created_at', 'updated_at')
         read_only_fields = ('created_at', 'updated_at')
 
-class UserMotelSerializers(serializers.ModelSerializer):
+class UserMotelSerializers(serializers.ModelSerializer):  
     post = GetMotelSerializer(many=True)
     class Meta:
         model = User
