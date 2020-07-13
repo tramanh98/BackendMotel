@@ -8,11 +8,7 @@ from .views import *
 
 app_name = 'motel'
 
-# router = routers.DefaultRouter()
-# router.register(r'posts', views.PhongTroListCreateAPIView)
-# router.register(r'posts', views.PhongTroUpdateDeleteAPIView, basename="Posts")
 urlpatterns = [
-    # url('^api/', include(router.urls)),
     path('api/user/motel', GetAllPost.as_view()), # Get all user's post and user's infor
     path('api/motels/', MotelList.as_view()), # Sort list
     path('api/motels/create/', CreateMotelViews.as_view()), # Post method
@@ -23,6 +19,3 @@ urlpatterns = [
     path('api/motels/img/delete/<int:img_fk>/<pk>/', PhotoMotelDelete.as_view()), # Xóa ảnh của bài đăng
     path('api/motels/latest', MotelListLatest.as_view()), # Get list latest
 ]
-# urlpatterns += [
-#     path('api-auth/', include('rest_framework.urls')),
-# ]

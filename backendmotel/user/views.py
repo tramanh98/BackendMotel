@@ -20,7 +20,7 @@ class MyProfile(APIView):
     permission_classes = [IsAuthenticated]
 
     @csrf_exempt
-    def get(seft, request, *args, **kwargs):
+    def get(seft, request, *args, **kwargs):    # lấy thông tin cá nhân ( first name, last name, email, phone)
         print(request.user.id)
         user = get_object_or_404(User, pk = request.user.id)
         serializer = UserSerializer(user)
@@ -36,13 +36,6 @@ class MyProfile(APIView):
         return Response({"success": "Success", "data" : serializer.data})
 
 
-    
-class ProfileUpdateDeleteAPIView1(viewsets.GenericViewSet,
-                                  RetrieveUpdateDestroyAPIView):
-    permission_classes = (IsAuthenticated,)
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    # lookup_field = 'id'
 
 
 class ProfileUpdateDeleteAPIView(viewsets.GenericViewSet, RetrieveUpdateDestroyAPIView): 
@@ -50,8 +43,7 @@ class ProfileUpdateDeleteAPIView(viewsets.GenericViewSet, RetrieveUpdateDestroyA
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-    def get_queryset(self): #Authentication user để xóa bài đăng
-        
+    def get_queryset(self): 
         query = User.objects.filter(pk = self.request.user.id)
         return query
 
